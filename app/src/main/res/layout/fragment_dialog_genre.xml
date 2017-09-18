@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar style="@style/ToolbarDialog">
+
+        <TextView
+            android:id="@+id/text_view_genre_title"
+            style="@style/ToolbarTextDialog"
+            android:text="@string/text_toolbar_genres" />
+    </android.support.v7.widget.Toolbar>
+
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/recycle_view_genres"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dialogHeight">
+
+</android.support.v7.widget.RecyclerView>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="@dimen/dialogButtonTop"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_cancel_filter"
+            style="@style/ButtonDialogUpdate"
+            android:text="@string/cancel_button"
+            android:textColor="@color/colorText"/>
+
+        <Button
+            android:id="@+id/button_apply_filter"
+            style="@style/ButtonDialogUpdate"
+            android:layout_toRightOf="@+id/button_cancel_filter"
+            android:text="@string/add_button" />
+    </RelativeLayout>
+</LinearLayout>

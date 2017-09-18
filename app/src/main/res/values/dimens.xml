@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_view_elevation">4dp</dimen>
+    <dimen name="image_view_film_width">100dp</dimen>
+    <dimen name="image_view_film_height">200dp</dimen>
+    <dimen name="text_size_film_name">14sp</dimen>
+    <dimen name="text_size_film_description">12sp</dimen>
+    <dimen name="relative_layout_film_description_margin_left">20dp</dimen>
+    <dimen name="dialogButtonTop">10dp</dimen>
+    <dimen name="textToolbarDialog">20sp</dimen>
+    <dimen name="textButtonDialog">18sp</dimen>
+    <dimen name="textButtonDialogCalendar">14sp</dimen>
+    <dimen name="radioGroupMarginTop">10dp</dimen>
+    <dimen name="radioButtonDialog">10dp</dimen>
+    <dimen name="dialogHeight">250dp</dimen>
+    <dimen name="card_view_margin">5dp</dimen>
+    <dimen name="layoutHeightName">50dp</dimen>
+    <dimen name="margin_card_movie">5dp</dimen>
+    <dimen name="appBarLayoutHeight">220dp</dimen>
+    <dimen name="imagePosterWidth">120dp</dimen>
+    <dimen name="imagePosterHeight">184dp</dimen>
+    <dimen name="buttonBackWidth">40dp</dimen>
+    <dimen name="buttonBackHeight">40dp</dimen>
+    <dimen name="marginButtonBack">5dp</dimen>
+    <dimen name="imageHeightBasePoster">300dp</dimen>
+    <dimen name="titleWidth">200dp</dimen>
+    <dimen name="textTitelSizeMovie">24sp</dimen>
+</resources>
