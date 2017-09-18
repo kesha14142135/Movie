@@ -57,10 +57,11 @@
                     android:layout_width="@dimen/titleWidth"
                     android:layout_height="match_parent"
                     android:layout_alignParentRight="true"
+                    android:maxLines="2"
                     android:text="@string/title_movie"
                     android:textAlignment="center"
                     android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/textTitelSizeMovie" />
+                    android:textSize="@dimen/textTitleSizeMovie" />
             </RelativeLayout>
 
             <ImageView
@@ -71,7 +72,7 @@
                 android:layout_marginStart="16dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/poster"
-                android:transitionName="@string/movieImage" />
+                android:transitionName="@string/movie_image" />
 
         </RelativeLayout>
 
@@ -94,21 +95,33 @@
                 android:id="@+id/text_view_movie_date_release"
                 style="@style/MovieDescription"
                 android:maxLines="2"
-                android:text="@string/movieReleaseDate" />
+                android:text="@string/movie_releaseDate" />
 
 
             <TextView
                 android:id="@+id/text_view_genres"
                 style="@style/MovieDescription"
                 android:maxLines="2"
-                android:text="@string/movieGenres" />
+                android:text="@string/movie_genres" />
 
 
             <TextView
-                android:id="@+id/text_view_description"
+                android:id="@+id/text_view_overview"
                 style="@style/MovieDescription"
                 android:maxLines="2"
-                android:text="@string/movieDescription" />
+                android:text="@string/movie_description" />
+
+            <TextView
+                android:id="@+id/text_view_vote_average"
+                style="@style/MovieDescription"
+                android:maxLines="2"
+                android:text="@string/movie_description" />
+
+            <TextView
+                android:id="@+id/text_view_vote_count"
+                style="@style/MovieDescription"
+                android:maxLines="2"
+                android:text="@string/movie_description" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -116,6 +129,7 @@
 
                 <Button
                     android:id="@+id/button_delete_movie"
+                    style="@style/Widget.AppCompat.Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -124,12 +138,12 @@
 
                 <Button
                     android:id="@+id/button_add_movie"
+                    style="@style/Widget.AppCompat.Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/add_button" />
             </LinearLayout>
-
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>

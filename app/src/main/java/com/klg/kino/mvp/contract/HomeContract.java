@@ -21,6 +21,5 @@ public interface HomeContract {
         void getGenres();
 
         void updateGenres(List<GenreRealm> genres);
-
     }
 }

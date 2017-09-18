@@ -1,7 +1,7 @@
 package com.klg.kino.mvp.presenter;
 
 import com.klg.kino.R;
-import com.klg.kino.database.MovieRealm;
+import com.klg.kino.database.FavoriteRealm;
 import com.klg.kino.mvp.contract.MovieInfoContract;
 import com.klg.kino.mvp.model.MovieInfoBaseDataSource;
 import com.klg.kino.mvp.model.MovieInfoDataSource;
@@ -13,12 +13,12 @@ import com.klg.kino.mvp.model.MovieInfoDataSource;
 public class MovieInfoPresenter implements MovieInfoContract.Presenter, MovieInfoBaseDataSource.CallbackMovieChange {
 
     private MovieInfoContract.View mView;
-    private MovieRealm mMovie;
+    private FavoriteRealm mMovie;
     private MovieInfoBaseDataSource mBaseData;
 
     @Override
     public void attachView(MovieInfoContract.View view) {
-        mMovie = new MovieRealm();
+        mMovie = new FavoriteRealm();
         mView = view;
         mBaseData = new MovieInfoDataSource(view.getContext());
     }
@@ -32,7 +32,7 @@ public class MovieInfoPresenter implements MovieInfoContract.Presenter, MovieInf
     public void getMovieById(int id) {
         mBaseData.getMovie(id, new MovieInfoBaseDataSource.CallbackMovie() {
             @Override
-            public void onSuccess(MovieRealm movie, boolean isInFavorite) {
+            public void onSuccess(FavoriteRealm movie, boolean isInFavorite) {
                 mMovie = movie;
                 mView.showMovie(movie, isInFavorite);
             }

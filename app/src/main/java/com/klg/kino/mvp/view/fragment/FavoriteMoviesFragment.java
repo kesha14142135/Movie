@@ -12,11 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.klg.kino.R;
-import com.klg.kino.database.MovieRealm;
+import com.klg.kino.database.FavoriteRealm;
 import com.klg.kino.mvp.contract.FavoriteMoviesContract;
 import com.klg.kino.mvp.presenter.FavoriteMoviesPresenter;
 import com.klg.kino.mvp.view.activity.MovieInfoActivity;
-import com.klg.kino.mvp.view.adapter.MoviesAdapter;
+import com.klg.kino.mvp.view.adapter.FavoriteAdapter;
 import com.klg.kino.mvp.view.adapter.UpdateableFragmentListener;
 
 import java.util.ArrayList;
@@ -24,13 +24,12 @@ import java.util.List;
 
 public class FavoriteMoviesFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener,
         UpdateableFragmentListener, FavoriteMoviesContract.View {
-    private Boolean mFlag = Boolean.FALSE;
     private SwipeRefreshLayout mSwipeRefresh;
     private RecyclerView mRecyclerView;
     private Context mContext;
-    private List<MovieRealm> mMovies;
+    private List<FavoriteRealm> mMovies;
     private FavoriteMoviesContract.Presenter mPresenter;
-    private MoviesAdapter mAdapter;
+    private FavoriteAdapter mAdapter;
 
     public static FavoriteMoviesFragment newInstance() {
         return new FavoriteMoviesFragment();
@@ -50,8 +49,13 @@ public class FavoriteMoviesFragment extends Fragment implements SwipeRefreshLayo
         mMovies = new ArrayList<>();
         mPresenter = new FavoriteMoviesPresenter();
         mPresenter.attachView(this);
-        mPresenter.getMovies();
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mPresenter.getMovies();
     }
 
     @Override
@@ -68,34 +72,24 @@ public class FavoriteMoviesFragment extends Fragment implements SwipeRefreshLayo
     @Override
     public void onRefresh() {
         mPresenter.getMovies();
-        mFlag = Boolean.FALSE;
     }
 
     @Override
     public void showError(String message) {
+        //Add SnackBar
         mSwipeRefresh.setRefreshing(false);
     }
 
     @Override
     public void update() {
-        mFlag = Boolean.FALSE;
-        mPresenter.updateMoviesWithFilter();
+        mPresenter.getMovies();
     }
 
     @Override
-    public void showMovies(List<MovieRealm> movies) {
+    public void showMovies(List<FavoriteRealm> movies) {
         mSwipeRefresh.setRefreshing(false);
         mMovies = movies;
-        if (mFlag == Boolean.FALSE) {
-            createMoviesAdapter();
-        }
-    }
-
-    @Override
-    public void showMoreMovies(List<MovieRealm> movies) {
-        mMovies.addAll(movies);
-        mAdapter.notifyDataSetChanged();
-        mAdapter.setLoaded();
+        createMoviesAdapter();
     }
 
     private void viewInformationAboutMovie(int id) {
@@ -105,17 +99,8 @@ public class FavoriteMoviesFragment extends Fragment implements SwipeRefreshLayo
     }
 
     private void createMoviesAdapter() {
-        mAdapter = new MoviesAdapter(mContext, mRecyclerView, mMovies,
-                this::viewInformationAboutMovie);
-        mAdapter.setOnLoadMoreListener(() -> {
-            mMovies.add(null);
-            mAdapter.notifyItemInserted(mMovies.size() - 1);
-            mMovies.remove(mMovies.size() - 1);
-            mAdapter.notifyItemRemoved(mMovies.size());
-            mPresenter.loadMoreMovies();
-        });
+        mAdapter = new FavoriteAdapter(mContext, mMovies, this::viewInformationAboutMovie);
         mRecyclerView.setAdapter(mAdapter);
-        mFlag = Boolean.TRUE;
     }
 
     private void updateViewDependencies(View view) {

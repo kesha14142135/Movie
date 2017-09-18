@@ -16,7 +16,6 @@ import com.klg.kino.database.FavoriteRealm;
 import com.klg.kino.database.MovieRealm;
 import com.klg.kino.mvp.view.adapter.callback.CallBackMovieId;
 import com.klg.kino.mvp.view.adapter.callback.OnLoadMoreListener;
-import com.klg.kino.mvp.view.fragment.FavoriteMoviesFragment;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -25,42 +24,17 @@ import java.util.List;
  * Created by sergejkozin on 9/15/17.
  */
 
-public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private List<MovieRealm> mMovies;
+public class FavoriteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    private List<FavoriteRealm> mMovies;
     private CallBackMovieId mCallBackMovie;
     private Context mContext;
-    private OnLoadMoreListener mOnLoadMoreListener;
-    private boolean isLoading;
-    private int visibleThreshold = 2;
-    private int lastVisibleItem, totalItemCount;
     private final int VIEW_TYPE_ITEM = 0;
     private final int VIEW_TYPE_LOADING = 1;
 
-    public MoviesAdapter(Context context, RecyclerView recyclerView, List<MovieRealm> movies, CallBackMovieId callBack) {
+    public FavoriteAdapter(Context context, List<FavoriteRealm> movies, CallBackMovieId callBack) {
         mContext = context;
         mMovies = movies;
         mCallBackMovie = callBack;
-
-        final LinearLayoutManager linearLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                totalItemCount = linearLayoutManager.getItemCount();
-                lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition();
-                if (!isLoading && totalItemCount <= (lastVisibleItem + visibleThreshold)) {
-                    if (mOnLoadMoreListener != null) {
-                        mOnLoadMoreListener.onLoadMore();
-                    } else {
-                        isLoading = true;
-                    }
-                }
-            }
-        });
-    }
-
-    public void setOnLoadMoreListener(OnLoadMoreListener onLoadMoreListener) {
-        mOnLoadMoreListener = onLoadMoreListener;
     }
 
     @Override
@@ -70,20 +44,13 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (viewType == VIEW_TYPE_ITEM) {
             View view = LayoutInflater.from(mContext).inflate(R.layout.card_view_movie, parent, false);
             return new MovieViewHolder(view);
-        } else if (viewType == VIEW_TYPE_LOADING) {
-            View view = LayoutInflater.from(mContext).inflate(R.layout.layout_loading_item, parent, false);
-            return new LoadingViewHolder(view);
-        }
-        return null;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (holder instanceof MovieViewHolder) {
-            MovieRealm movie = mMovies.get(position);
+            FavoriteRealm movie = mMovies.get(position);
             MovieViewHolder movieViewHolder = (MovieViewHolder) holder;
             movieViewHolder.mTextViewMovieName.setText(movie.getTitle());
             movieViewHolder.mTextViewMovieDescription.setText(movie.getOverview());
@@ -91,19 +58,11 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     .into(movieViewHolder.mImageViewMoviePoster);
             movieViewHolder.mCardViewMovie.setOnClickListener(view ->
                     mCallBackMovie.clickMovie(mMovies.get(position).getId()));
-        } else if (holder instanceof LoadingViewHolder) {
-            LoadingViewHolder loadingViewHolder = (LoadingViewHolder) holder;
-            loadingViewHolder.progressBar.setIndeterminate(true);
-        }
     }
 
     @Override
     public int getItemCount() {
         return mMovies == null ? 0 : mMovies.size();
-    }
-
-    public void setLoaded() {
-        isLoading = false;
     }
 
     private class MovieViewHolder extends RecyclerView.ViewHolder {
@@ -121,14 +80,4 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             mCardViewMovie = itemView.findViewById(R.id.card_view_movie);
         }
     }
-
-    private class LoadingViewHolder extends RecyclerView.ViewHolder {
-        ProgressBar progressBar;
-
-        LoadingViewHolder(View itemView) {
-            super(itemView);
-            progressBar = itemView.findViewById(R.id.progress_bar_recycler_view);
-        }
-    }
-
 }

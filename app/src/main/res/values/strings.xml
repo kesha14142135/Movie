@@ -25,16 +25,15 @@
     <string name="sort_popularity">popularity.des</string>
     <string name="genre_checked">mIsChecked</string>
     <string name="movie_id">movieId</string>
-    <string name="movieDescription">Description some description</string>
+    <string name="movie_description">Description some description</string>
     <string name="content">Content</string>
-    <string name="movieGenres">Detective</string>
-    <string name="movieReleaseDate">22 03 2017</string>
-    <string name="movieImage">movie</string>
+    <string name="movie_genres">Detective</string>
+    <string name="movie_releaseDate">22 03 2017</string>
+    <string name="movie_image">movie</string>
     <string name="error_delete_or_add">Delete or add not done</string>
     <string name="error_read_movie">Did not get to read the data</string>
     <string name="title_movie">Movie name</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search_fragment">Search</string>
+    <string name="error_add_movies">Failed to add data about the movie to the database</string>
 </resources>

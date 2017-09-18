@@ -42,10 +42,12 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginLeft">@dimen/radioButtonDialog</item>
     </style>
+
     <style name="DialogAnimation">
         <item name="android:windowEnterAnimation">@anim/up_animation</item>
         <item name="android:windowExitAnimation">@anim/down_animation</item>
     </style>
+
     <style name="MovieDescription">
         <item name="android:textColor">@color/colorText</item>
         <item name="android:textSize">@dimen/textSizeDescription</item>
@@ -57,7 +59,4 @@
         <item name="android:ellipsize">end</item>
         <item name="android:gravity">bottom</item>
     </style>
-
-    <dimen name="textSizeDescription">22sp</dimen>
-    <dimen name="paddingDescription">16dp</dimen>
 </resources>

@@ -1,6 +1,6 @@
 package com.klg.kino.mvp.model;
 
-import com.klg.kino.database.MovieRealm;
+import com.klg.kino.database.FavoriteRealm;
 
 /**
  * Created by sergejkozin on 9/18/17.
@@ -12,14 +12,14 @@ public interface MovieInfoBaseDataSource {
 
     interface CallbackMovie {
 
-        void onSuccess(MovieRealm movie, boolean flag);
+        void onSuccess(FavoriteRealm movie, boolean flag);
 
         void onFailure();
     }
 
-    void addMovie(MovieRealm movie, CallbackMovieChange callback);
+    void addMovie(FavoriteRealm movie, CallbackMovieChange callback);
 
-    void deleteMovie(MovieRealm movie, CallbackMovieChange callback);
+    void deleteMovie(FavoriteRealm movie, CallbackMovieChange callback);
 
     interface CallbackMovieChange {
 
@@ -27,5 +27,4 @@ public interface MovieInfoBaseDataSource {
 
         void onFailure();
     }
-
 }

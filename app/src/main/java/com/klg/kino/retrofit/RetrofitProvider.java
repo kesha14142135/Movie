@@ -52,4 +52,10 @@ public class RetrofitProvider {
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.computation());
     }
+
+    public Observable<MoviesAnswer> searchMovies(String name) {
+        return get().create(KinoService.class).searchMovie(name, mToken)
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.computation());
+    }
 }

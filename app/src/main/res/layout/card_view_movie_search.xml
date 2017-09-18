@@ -20,8 +20,8 @@
 
             <ImageView
                 android:id="@+id/image_view_movie"
-                android:layout_width="@dimen/imageViewFilmWidth"
-                android:layout_height="@dimen/imageViewMovieHeight"
+                android:layout_width="@dimen/imageViewMovieWidth"
+                android:layout_height="@dimen/imageViewFilmSearchHeight"
                 android:src="@drawable/film_icon" />
 
             <RelativeLayout
@@ -39,11 +39,11 @@
                     android:textSize="@dimen/textSizeMovieName" />
 
                 <TextView
-                    android:id="@+id/text_view_description_movie"
+                    android:id="@+id/text_view_data_release_movie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/text_view_name_movie"
-                    android:text="@string/film_description"
+                    android:text="@string/movie_releaseDate"
                     android:textSize="@dimen/textSizeMovieDescription" />
             </RelativeLayout>
         </LinearLayout>

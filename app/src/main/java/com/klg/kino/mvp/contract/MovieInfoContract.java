@@ -1,6 +1,6 @@
 package com.klg.kino.mvp.contract;
 
-import com.klg.kino.database.MovieRealm;
+import com.klg.kino.database.FavoriteRealm;
 
 /**
  * Created by sergejkozin on 9/18/17.
@@ -8,7 +8,7 @@ import com.klg.kino.database.MovieRealm;
 
 public interface MovieInfoContract {
     interface View extends BaseContract.View {
-        void showMovie(MovieRealm movies, boolean isInFavorite);
+        void showMovie(FavoriteRealm movies, boolean isInFavorite);
 
         void showChange(boolean isInFavorite);
     }

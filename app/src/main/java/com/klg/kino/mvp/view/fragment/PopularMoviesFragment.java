@@ -35,8 +35,8 @@ public class PopularMoviesFragment extends Fragment implements UpdateableFragmen
     private PopularMoviesContract.Presenter mPresenter;
     private MoviesAdapter mAdapter;
 
-    public static FavoriteMoviesFragment newInstance() {
-        return new FavoriteMoviesFragment();
+    public static PopularMoviesFragment newInstance() {
+        return new PopularMoviesFragment();
     }
 
     @Override
@@ -48,7 +48,7 @@ public class PopularMoviesFragment extends Fragment implements UpdateableFragmen
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_favorite_movies, container, false);
+        View view = inflater.inflate(R.layout.fragment_popular_movies, container, false);
         updateViewDependencies(view);
         mMovies = new ArrayList<>();
         mPresenter = new PopularMoviesPresenter();
@@ -76,6 +76,7 @@ public class PopularMoviesFragment extends Fragment implements UpdateableFragmen
 
     @Override
     public void showError(String message) {
+        //Add SnackBar
         mSwipeRefresh.setRefreshing(false);
     }
 
@@ -122,9 +123,9 @@ public class PopularMoviesFragment extends Fragment implements UpdateableFragmen
     }
 
     private void updateViewDependencies(View view) {
-        mSwipeRefresh = view.findViewById(R.id.swipe_refresh_favorite_movie);
+        mSwipeRefresh = view.findViewById(R.id.swipe_refresh_popular_movie);
         mSwipeRefresh.setOnRefreshListener(this);
-        mRecyclerView = view.findViewById(R.id.recycler_view_favorite_movies);
+        mRecyclerView = view.findViewById(R.id.recycler_view_popular_movies);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
     }
 }

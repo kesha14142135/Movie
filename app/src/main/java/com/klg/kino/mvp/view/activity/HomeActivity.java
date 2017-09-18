@@ -12,16 +12,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.klg.kino.R;
-import com.klg.kino.api.model.Genre;
 import com.klg.kino.database.GenreRealm;
 import com.klg.kino.mvp.contract.HomeContract;
 import com.klg.kino.mvp.presenter.HomePresenter;
-import com.klg.kino.mvp.presenter.SearchFragment;
+import com.klg.kino.mvp.view.fragment.SearchFragment;
 import com.klg.kino.mvp.view.callback.CallBackGenreInActivity;
 import com.klg.kino.mvp.view.fragment.GenresDialogFragment;
 import com.klg.kino.mvp.view.fragment.MoviesFragment;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity implements CallBackGenreInActivity, HomeContract.View {

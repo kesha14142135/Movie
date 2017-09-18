@@ -2,15 +2,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.klg.kino.mvp.presenter.SearchFragment">
-    <RelativeLayout
+    tools:context="com.klg.kino.mvp.view.fragment.SearchFragment">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <SearchView
+            android:id="@+id/search_view_movies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search here" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_search_movies"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:textSize="@dimen/textTitelSizeMovie"
-            android:text="@string/search_fragment" />
-    </RelativeLayout>
+            android:layout_margin="@dimen/marginRecyclerView"/>
+    </LinearLayout>
 </FrameLayout>
